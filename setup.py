@@ -2,10 +2,7 @@ import glob
 from setuptools import setup
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension, CppExtension
 
-
 sources = glob.glob('src/*.cpp')+glob.glob('src/*.cu')
-
-
 setup(
     name='kat_rational',  # Name of the package
     version='0.4',  # Version of the package
@@ -20,5 +17,9 @@ setup(
     #                   sources=sources,
     #                   )
     # ],
-    cmdclass={'build_ext': BuildExtension}
+    install_requires=[
+        'torch', 
+    ],
+    cmdclass={'build_ext': BuildExtension},
+    packages=["kat_rational"]
 )
